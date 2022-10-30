@@ -1,0 +1,38 @@
+.home {
+
+}
+
+.promo {
+    padding: 60px 0 120px;
+
+    &__wrapper {
+        margin-top: 6rem;
+        padding: 5rem 0;
+        border-radius: 25px;
+        background: #f7f2e8;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+    }
+
+    // .promo__text
+
+    &__text {
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: 500;
+    }
+
+     // .promo__img
+
+    &__img {
+        width: 35%;
+    }
+
+    // .promo__btn
+
+    &__btn {
+
+    }
+}

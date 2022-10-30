@@ -1,0 +1,19 @@
+.logo {
+  position: relative;
+  font-family: 'Pacifico', cursive;
+  font-size: 3.5rem;
+  cursor: pointer;
+  &::after {
+    content: ' ';
+    display: inline-block;
+    background-image: url('/src/assets/icons/bird.svg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 31px;
+    right: -20px;
+    width: 37px;
+    height: 34px;
+
+  }
+}
