@@ -1,0 +1,7 @@
+.column-layout-2 {
+    display: flex;
+    justify-content: space-between;
+    & > * {
+        flex-basis: 48.5%;
+    }
+}

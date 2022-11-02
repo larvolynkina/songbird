@@ -9,7 +9,15 @@ html {
 }
 
 .main-title {
+  padding: 35px 0;
   text-align: center;
-  font-size: 3.5rem;
+  font-size: 6rem;
   font-weight: 700;
+  background-image: url(/src/assets/images/main-bg.jpg);
+  background-size: 250px;
+  background-repeat: repeat;
+  background-position-y: center;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }

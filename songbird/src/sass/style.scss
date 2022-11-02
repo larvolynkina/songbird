@@ -18,8 +18,10 @@
   'layout/header';
 
 @import
+  'components/audio-player',
   'components/btn',
   'components/logo';
 
 @import
-  'pages/main';
+  'pages/main',
+  'pages/quiz';

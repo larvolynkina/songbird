@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz</title>
+</head>
+
+<body class="page">
+  <header class="header">
+    <div class="container">
+      <div class="header__wrapper">
+        <div class="logo">
+          <a class="logo__link" href="#">Songbird</a>
+        </div>
+        <nav class="nav">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="./index.html" class="nav__link">Home</a>
+            </li>
+            <li class="nav__item">
+              <a href="./quiz.html" class="nav__link">Quiz</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <main class="quiz">
+    <section class="progress">
+      <div class="container">
+        <div class="progress__bar">
+          <progress id="bar" max="60" value="0"></progress>
+        </div>
+        <ul class="progress__list">
+          <li class="progress__item progress__item_active">Разминка</li>
+          <li class="progress__item">Воробьиные</li>
+          <li class="progress__item">Обитатели леса</li>
+          <li class="progress__item">Певчие птицы</li>
+          <li class="progress__item">Хищные птицы</li>
+          <li class="progress__item">Морские птицы</li>
+        </ul>
+      </div>
+    </section>
+    <section class="score">
+      <div class="container">
+        <p class="score__text">Score: <span class="score__count">0</span></p>
+      </div>
+    </section>
+    <section class="question">
+      <div class="container">
+        <div class="question__wrapper">
+          <div class="question__image">
+            <img src="/src/assets/images/unknown-bird.jpg" alt="" class="question__img">
+          </div>
+          <div class="question__info">
+            <h2 class="question__title">Кукушка</h2>
+            <span class="line question__line"></span>
+            <div class="audio-player question__audio ">
+              <div class="audio-player__wrapper">
+                <div class="audio-player__main-wrapper">
+                  <div class="audio-player__button">
+                    <img src="/src/assets/icons/play.svg" alt="">
+                  </div>
+                  <div class="audio-player__progress">
+                    <div class="audio-player__progress-bar">
+                      <div id="audio-progress"></div>
+                    </div>
+                    <div class="audio-player__progress-time">
+                      <div id="timer" class="audio-player__progress-timer">00:00</div>
+                      <div id="duration">00:40</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="audio-player__volume-wrapper">
+                  <div class="audio-player__volume">
+                    <div class="audio-player__mute">
+                      <img src="/src/assets/icons/volume.svg" alt="">
+                    </div>
+                    <input class="volume" type="range" min="0" max="1" step="0.01">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="variants">
+      <div class="container">
+        <div class="column-layout-2">
+          <ul class="variants__list">
+            <li class="variants__item"><span></span>Ворона</li>
+            <li class="variants__item"><span></span>Журавль</li>
+            <li class="variants__item"><span></span>Синица</li>
+            <li class="variants__item"><span></span>Воробей</li>
+            <li class="variants__item"><span></span>Грач</li>
+            <li class="variants__item"><span></span>Кукушка</li>
+          </ul>
+          <div class="variants__details">
+            <div class="variants__info">
+              <div class="variants__image">
+                <img src="/src/assets/images/unknown-bird.jpg" alt="" class="variants__img">
+              </div>
+              <div class="variants__main">
+                <h3 class="variants__title">Кукушка</h3>
+                <p class="variants__latin">Cuculus canorus</p>
+                <span class="line variants__line"></span>
+                <div class="audio-player variants__audio ">
+                  <div class="audio-player__wrapper audio-player__wrapper_column">
+                    <div class="audio-player__main-wrapper audio-player__main-wrapper_column">
+                      <div class="audio-player__button audio-player__button_mini">
+                        <img src="/src/assets/icons/play.svg" alt="">
+                      </div>
+                      <div class="audio-player__progress">
+                        <div class="audio-player__progress-bar">
+                          <div id="audio-progress-variants"></div>
+                        </div>
+                        <div class="audio-player__progress-time">
+                          <div id="timer-variants" class="audio-player__progress-timer">00:00</div>
+                          <div id="duration-variants">00:40</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="audio-player__volume-wrapper">
+                      <div class="audio-player__volume">
+                        <div class="audio-player__mute">
+                          <img src="/src/assets/icons/volume.svg" alt="">
+                        </div>
+                        <input class="volume volume_descr" type="range" min="0" max="1" step="0.01">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="variants__descr">
+              <p>Кукушку назвали так из-за особенностей ее песен. Звонкое «ку-ку» не спутать ни с какой другой птицей.
+                Кукушки не строят гнезда, их потомство выращивают другие виды пернатых, которым кукушки подбрасывают
+                свои яйца.</p>
+            </div>
+          </div>
+        </div>
+        <button class="next">Next question</button>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__wrapper">
+        <a href="https://github.com/larvolynkina" class="footer__link"><img class="footer__img"
+            src="/src/assets/icons/github-logo.png" alt="github-logo"></a>
+        <p class="footer__year">2022</p>
+        <a href="https://rs.school/js/" class="footer__link"><img class="footer__img"
+            src="/src/assets/icons/rsschool-logo.svg" alt="rsschool-logo"></a>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

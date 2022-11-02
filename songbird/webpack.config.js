@@ -19,7 +19,7 @@ module.exports = {
   },
   entry: {
     main: './src/pages/main/main.js',
-    // donate: './src/pages/donate/donate.js',
+    quiz: './src/pages/quiz/quiz.js',
   },
 
   output: {
@@ -46,11 +46,11 @@ module.exports = {
       template: './src/pages/main/main.html',
       chunks: ['main'],
     }),
-    // new HtmlWebpackPlugin({
-    //   filename: 'donate.html',
-    //   template: './src/pages/donate/donate.html',
-    //   chunks: ['donate'],
-    // }),
+    new HtmlWebpackPlugin({
+      filename: 'quiz.html',
+      template: './src/pages/quiz/quiz.html',
+      chunks: ['quiz'],
+    }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
     }),
