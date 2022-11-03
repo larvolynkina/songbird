@@ -13,16 +13,10 @@
     <div class="container">
       <div class="header__wrapper">
         <div class="logo">
-          <a class="logo__link" href="#">Songbird</a>
+          <a class="logo__link" href="./index.html">Songbird</a>
         </div>
         <nav class="nav">
           <ul class="nav__list">
-            <li class="nav__item">
-              <a href="./index.html" class="nav__link">Home</a>
-            </li>
-            <li class="nav__item">
-              <a href="./quiz.html" class="nav__link">Quiz</a>
-            </li>
           </ul>
         </nav>
       </div>
@@ -35,12 +29,6 @@
           <progress id="bar" max="60" value="0"></progress>
         </div>
         <ul class="progress__list">
-          <li class="progress__item progress__item_active">Разминка</li>
-          <li class="progress__item">Воробьиные</li>
-          <li class="progress__item">Обитатели леса</li>
-          <li class="progress__item">Певчие птицы</li>
-          <li class="progress__item">Хищные птицы</li>
-          <li class="progress__item">Морские птицы</li>
         </ul>
       </div>
     </section>
@@ -53,10 +41,10 @@
       <div class="container">
         <div class="question__wrapper">
           <div class="question__image">
-            <img src="/src/assets/images/unknown-bird.jpg" alt="" class="question__img">
+            <img src="/src/assets/images/unknown-bird.png" alt="" class="question__img">
           </div>
           <div class="question__info">
-            <h2 class="question__title">Кукушка</h2>
+            <h2 class="question__title">******</h2>
             <span class="line question__line"></span>
             <div class="audio-player question__audio ">
               <div class="audio-player__wrapper">
@@ -100,9 +88,11 @@
             <li class="variants__item"><span></span>Кукушка</li>
           </ul>
           <div class="variants__details">
+            <div class="variants__manual">
+            </div>
             <div class="variants__info">
               <div class="variants__image">
-                <img src="/src/assets/images/unknown-bird.jpg" alt="" class="variants__img">
+                <img src="/src/assets/images/unknown-bird.png" alt="" class="variants__img">
               </div>
               <div class="variants__main">
                 <h3 class="variants__title">Кукушка</h3>
@@ -144,7 +134,16 @@
             </div>
           </div>
         </div>
-        <button class="next">Next question</button>
+        <button class="next next_disabled">Next question</button>
+      </div>
+    </section>
+    <section class="results">
+      <div class="container">
+        <div class="results__wrapper">
+          <h1 class="results__title">Поздравляем!</h1>
+          <p class="results__text">Вы прошли викторину и набрали 13 из 30 возможных баллов!</p>
+          <button class="play-again">Попробовать еще раз</button>
+        </div>
       </div>
     </section>
   </main>

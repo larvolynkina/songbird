@@ -10,7 +10,7 @@
 
     & progress {
       width: 100%;
-      height: 15px;
+      height: 12px;
       appearance: none;
       -moz-appearance: none;
       -webkit-appearance: none;
@@ -46,6 +46,7 @@
     font-size: 20px;
     font-weight: 400;
     opacity: 0.5;
+    border-radius: 4px;
     &_active {
       opacity: 1;
     }
@@ -59,13 +60,14 @@
 
   &__wrapper {
     display: flex;
-    background: #efe7d3;
+    background: #f7f2e8;
     padding: 20px;
     border-radius: 10px;
+    border: 1px solid #a8b4b9;
   }
 
   &__image {
-    flex-basis: 20%;
+    flex-basis: 19%;
     margin-right: 5rem;
   }
 
@@ -120,7 +122,7 @@
     display: flex;
     border-radius: 10px;
     flex-direction: column;
-    background: #efe7d3;
+    background: #f7f2e8;
     border: 1px solid #a8b4b9;
   }
 
@@ -152,14 +154,14 @@
       border-top-left-radius: 10px;
     }
     &:hover {
-      background: #f7f2e8;
+      background: #ece0c8;
     }
   }
 
   &__details {
     box-sizing: border-box;
     padding: 20px;
-    background: #efe7d3;
+    background: #f7f2e8;
     border: 1px solid #a8b4b9;
     border-radius: 10px;
   }
@@ -167,7 +169,8 @@
   // .variants__info
 
   &__info {
-    display: flex;
+    display: none;
+    // display: flex;
   }
 
   // .variants__image
@@ -209,6 +212,7 @@
   // .variants__descr
 
   &__descr {
+    display: none;
     margin-top: 20px;
     font-size: 1.6rem;
     line-height: 130%;
@@ -222,18 +226,13 @@
   &__audio {
     margin-top: 20px;
   }
-  
-}
 
-.next {
-  margin: 0 auto;
-  margin-top: 40px;
-  margin-bottom: 20px;
-  padding: 10px 50px;
-  display: block;
-  background: $main-color;
-  font-size: 1.8rem;
-  font-weight: 400;
+  &__manual {
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 140%;
+  }
+  
 }
 
 .score {
@@ -251,3 +250,34 @@
   &__count {
   }
 }
+
+.results {
+  display: none;
+  margin-top: 25px;
+  text-align: center;
+  margin-bottom: 60px;
+
+  &__wrapper {
+    padding: 80px 0;
+    background: #f7f2e8;
+  }
+
+  // .results__title
+
+  &__title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+
+  // .results__text
+
+  &__text {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 60px;
+  }
+}
+
+
+
