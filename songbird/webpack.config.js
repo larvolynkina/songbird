@@ -85,6 +85,10 @@ module.exports = {
         },
       },
       {
+        test: /\.(mp3)$/i,
+        type: 'asset/resource',
+      },
+      {
         test: /\.(jpe?g|png|webp|gif|svg)$/i,
         use: [
           {

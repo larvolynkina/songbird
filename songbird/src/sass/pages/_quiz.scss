@@ -76,6 +76,8 @@
   &__img {
     width: 100%;
     border-radius: 10px;
+    height: 155px;
+    object-fit: cover;
   }
 
   // .question__info
@@ -137,13 +139,6 @@
     gap: 10px;
     border-bottom: 1px solid #a8b4b9;
     cursor: pointer;
-    span {
-      display: inline-block;
-      background: #a8b4b9;
-      width: 10px;
-      height: 10px;
-      border-radius: 100%;
-    }
     &:last-child {
       border-bottom: none;
       border-bottom-right-radius: 10px;
@@ -155,6 +150,20 @@
     }
     &:hover {
       background: #ece0c8;
+    }
+  }
+
+  &__indicator {
+    display: inline-block;
+    background: #a8b4b9;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    &_error {
+      background-color: #d62c1a;
+    }
+    &_success {
+      background-color: $main-color;
     }
   }
 
@@ -185,6 +194,8 @@
   &__img {
     border-radius: 10px;
     width: 100%;
+    height: 143px;
+    object-fit: cover;
   }
 
   // .variants__main

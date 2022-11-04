@@ -77,6 +77,17 @@ function pickSecretNumber() {
   return number;
 }
 
+function checkCurrentQuestion() {
+  const progressItems = document.querySelectorAll('.progress__item');
+  let currentQuestionIndex;
+  progressItems.forEach((value, index) => {
+    if (value.classList.contains('progress__item_active')) {
+      currentQuestionIndex = index;
+    }
+  });
+  return currentQuestionIndex;
+}
+
 export {
   getLanguageSettings,
   createHtmlMain,
@@ -84,4 +95,5 @@ export {
   createHtmlQuiz,
   createMixNumbersArr,
   pickSecretNumber,
+  checkCurrentQuestion,
 };
