@@ -12,6 +12,9 @@ import {
   checkCurrentQuestion,
   checkIfDigitLessThanTen,
 } from '../../js/functions';
+
+import { moveAudioCircle, setVolume } from '../../js/audioplayer';
+
 import errorSound from '../../assets/sounds/error.mp3';
 import successSound from '../../assets/sounds/success.mp3';
 import playIco from '../../assets/icons/play.svg';
@@ -66,7 +69,9 @@ function createAudioForSecretBird() {
 }
 
 const secretAudio = createAudioForSecretBird();
+secretAudio.volume = 0.5;
 const currentAudio = new Audio();
+currentAudio.volume = 0.5;
 
 function toggleAudioPlayPause(audio, selector) {
   const buttonDiv = document.querySelector(selector);
@@ -242,6 +247,23 @@ function changeIndicatorsColor(event) {
 
 variantsList.addEventListener('click', changeIndicatorsColor);
 variantsList.addEventListener('click', showCurrentBirdDescription);
+
+moveAudioCircle(
+  secretAudio,
+  '.audio-player__progress-bar',
+  '#audio-circle',
+  '#audio-progress'
+);
+
+moveAudioCircle(
+  currentAudio,
+  '.audio-player__progress-bar_variants',
+  '#audio-circle-variants',
+  '#audio-progress-variants'
+);
+
+setVolume(secretAudio, 0);
+setVolume(currentAudio, 1);
 
 function changeCurrentQuestion() {
   const progressItems = document.querySelectorAll('.progress__item');

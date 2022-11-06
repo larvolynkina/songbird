@@ -55,9 +55,11 @@
   &__progress-bar {
     position: relative;
     height: 5px;
-    flex-grow: 1;
+    width: 350px;
     background-color: #a8b4b9;
-    cursor: pointer;
+    &_variants {
+      width: 130px;
+    }
   }
 
   &__progress-time {
@@ -79,6 +81,11 @@
     cursor: pointer;
     img {
       transition: opacity 0.3s ease;
+    }
+    &_active {
+      img {
+        opacity: 0.3;
+      }
     }
   }
 
@@ -106,9 +113,11 @@
 #audio-circle,
 #audio-circle-variants {
   position: absolute;
+  left: 0;
   top: 0;
   width: 15px;
   height: 15px;
+  cursor: pointer;
   border-radius: 50%;
   background-color: $main-color;
   z-index: 1;
