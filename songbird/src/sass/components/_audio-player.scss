@@ -14,7 +14,7 @@
   &__main-wrapper {
     display: flex;
     flex-basis: 70%;
-    gap: 15px;
+    gap: 20px;
     &_column {
       width: 100%;
       flex-basis: auto;
@@ -92,14 +92,27 @@
   }
 }
 
-#audio-progress {
+#audio-progress,
+#audio-progress-variants {
   position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 0%;
-    background-color: $main-color;
-    z-index: 1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  background-color: $main-color;
+  z-index: 1;
+}
+
+#audio-circle,
+#audio-circle-variants {
+  position: absolute;
+  top: 0;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: $main-color;
+  z-index: 1;
+  transform: translate(-50%,calc(-50% + 2px));
 }
 
 .volume {
@@ -115,8 +128,8 @@
 
 .volume::-webkit-slider-thumb {
   -webkit-appearance: none;
-  height: 13px;
-  width: 13px;
+  height: 15px;
+  width: 15px;
   border-radius: 100px;
   background: $main-color;
   cursor: pointer;

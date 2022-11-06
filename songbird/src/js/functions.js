@@ -88,6 +88,14 @@ function checkCurrentQuestion() {
   return currentQuestionIndex;
 }
 
+function checkIfDigitLessThanTen(n) {
+  let result = n;
+  if (result < 10) {
+    result = `0${result}`;
+  }
+  return result;
+}
+
 export {
   getLanguageSettings,
   createHtmlMain,
@@ -96,4 +104,5 @@ export {
   createMixNumbersArr,
   pickSecretNumber,
   checkCurrentQuestion,
+  checkIfDigitLessThanTen,
 };
