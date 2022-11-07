@@ -19,12 +19,14 @@ import errorSound from '../../assets/sounds/error.mp3';
 import successSound from '../../assets/sounds/success.mp3';
 import playIco from '../../assets/icons/play.svg';
 import pauseIco from '../../assets/icons/pause.svg';
+import unknownBird from '../../assets/images/unknown-bird.png';
 
 let lang = getLanguageSettings();
 const data = content[lang];
 const birds = birdsData[lang];
 
 let score = 0;
+let progressValue = 0;
 
 createNavLinks(data);
 createHtmlQuiz(data);
@@ -50,14 +52,14 @@ function fillVariantsContent() {
   return secretNumber;
 }
 
-const secretNumber = fillVariantsContent();
+let secretNumber = fillVariantsContent();
 
 function createAudioForSecretBird() {
   const currentQuestionIndex = checkCurrentQuestion();
   const currentBird = birds[currentQuestionIndex].filter(
     (value) => value.id === secretNumber
   );
-  const secretAudio = new Audio(currentBird[0].audio);
+  secretAudio.src = currentBird[0].audio;
   secretAudio.addEventListener('canplay', () => {
     const durationOnPage = document.querySelector('#duration');
     const duration = Math.round(secretAudio.duration);
@@ -65,13 +67,15 @@ function createAudioForSecretBird() {
     const seconds = checkIfDigitLessThanTen(duration - minutes * 60);
     durationOnPage.innerText = `${minutes}:${seconds}`;
   });
-  return secretAudio;
 }
 
-const secretAudio = createAudioForSecretBird();
+const secretAudio = new Audio();
+createAudioForSecretBird();
 secretAudio.volume = 0.5;
 const currentAudio = new Audio();
 currentAudio.volume = 0.5;
+
+const variantsList = document.querySelector('.variants__list');
 
 function toggleAudioPlayPause(audio, selector) {
   const buttonDiv = document.querySelector(selector);
@@ -120,11 +124,6 @@ secretAudio.addEventListener('timeupdate', () => {
     '#timer'
   );
 });
-
-const next = document.querySelector('.next');
-next.addEventListener('click', fillVariantsContent);
-
-const variantsList = document.querySelector('.variants__list');
 
 function showCurrentBirdDescription(event) {
   const playButtonMini = document.querySelector('.audio-player__button_mini');
@@ -231,6 +230,13 @@ function changeIndicatorsColor(event) {
     const buttonDiv = document.querySelector('.audio-player__button');
     const button = buttonDiv.querySelector('img');
     button.src = playIco;
+    const gameProgress = document.querySelector('#bar');
+    progressValue += 10;
+    gameProgress.value = progressValue;
+    if (progressValue < 60) {
+      const next = document.querySelector('.next');
+      next.classList.remove('next_disabled');
+    }
   } else {
     if (
       !event.target
@@ -266,9 +272,47 @@ setVolume(secretAudio, 0);
 setVolume(currentAudio, 1);
 
 function changeCurrentQuestion() {
+  const currentQuestionIndex = checkCurrentQuestion();
   const progressItems = document.querySelectorAll('.progress__item');
   progressItems[currentQuestionIndex].classList.remove('progress__item_active');
   progressItems[+currentQuestionIndex + 1].classList.add(
     'progress__item_active'
   );
 }
+
+function deleteVariants() {
+  variantsList.innerHTML = '';
+}
+
+function crossToNextQuestion() {
+  const next = document.querySelector('.next');
+  if (!next.classList.contains('next_disabled')) {
+    secretAudio.pause();
+    currentAudio.pause();
+    changeCurrentQuestion();
+    deleteVariants();
+    secretNumber = fillVariantsContent();
+    createAudioForSecretBird();
+    const questionTitle = document.querySelector('.question__title');
+    questionTitle.innerText = '******';
+    const questionImg = document.querySelector('.question__img');
+    questionImg.src = unknownBird;
+
+    // manual
+    const variantsManual = document.querySelector('.variants__manual');
+    variantsManual.style.display = 'block';
+    const variantsInfo = document.querySelector('.variants__info');
+    variantsInfo.style.display = 'none';
+    const variantsDescr = document.querySelector('.variants__descr');
+    variantsDescr.style.display = 'none';
+
+    // next
+    next.classList.add('next_disabled');
+
+    variantsList.addEventListener('click', changeIndicatorsColor);
+    variantsList.addEventListener('click', showCurrentBirdDescription);
+  }
+}
+
+const next = document.querySelector('.next');
+next.addEventListener('click', crossToNextQuestion);
