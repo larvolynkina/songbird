@@ -59,6 +59,10 @@ function createHtmlQuiz(data) {
   });
   // button next
   document.querySelector('.next').innerText = data.quiz.buttonNext;
+  // results
+  document.querySelector('.results__title').innerText = data.quiz.results.h1;
+  document.querySelector('.play-again').innerText =
+    data.quiz.results.buttonTryAgain;
 }
 
 function createMixNumbersArr() {

@@ -233,9 +233,10 @@ function changeIndicatorsColor(event) {
     const gameProgress = document.querySelector('#bar');
     progressValue += 10;
     gameProgress.value = progressValue;
-    if (progressValue < 60) {
-      const next = document.querySelector('.next');
-      next.classList.remove('next_disabled');
+    const next = document.querySelector('.next');
+    next.classList.remove('next_disabled');
+    if (progressValue === 60) {
+      next.innerText = data.quiz.buttonResults;
     }
   } else {
     if (
@@ -284,9 +285,54 @@ function deleteVariants() {
   variantsList.innerHTML = '';
 }
 
+function resetProgress() {
+  const progressBar = document.querySelector('#bar');
+  progressBar.value = 0;
+  const progressItems = document.querySelectorAll('.progress__item');
+  progressItems.forEach((item) => {
+    item.classList.remove('progress__item_active');
+  });
+}
+
+function showResults() {
+  const scoreTable = document.querySelector('.score');
+  scoreTable.style.display = 'none';
+  const questionSection = document.querySelector('.question');
+  questionSection.style.display = 'none';
+  const variantsSection = document.querySelector('.variants');
+  variantsSection.style.display = 'none';
+  const resultsSection = document.querySelector('.results');
+  resultsSection.style.display = 'block';
+  const resultsText = document.querySelector('.results__text');
+
+  if (score < 30) {
+    if (lang === 'ru') {
+      resultsText.innerText = `Вы прошли викторину и набрали ${score} из 30 возможных баллов!`;
+    } else {
+      resultsText.innerText = `You have passed the quiz and scored ${score} out of 30 possible points!`;
+    }
+
+    const playAgainBtn = document.querySelector('.play-again');
+    playAgainBtn.addEventListener('click', () => {
+      document.location.href = './quiz.html';
+    });
+  } else if (score === 30) {
+    if (lang === 'ru') {
+      resultsText.innerText = `Игра окончена.\nВы победили в викторине и набрали 30 из 30 возможных баллов!`;
+    } else {
+      resultsText.innerText = `Game is over. \nYou have win the quiz and scored 30 out of 30 possible points!`;
+    }
+    const playAgainBtn = document.querySelector('.play-again');
+    playAgainBtn.style.display = 'none';
+  }
+}
+
 function crossToNextQuestion() {
   const next = document.querySelector('.next');
-  if (!next.classList.contains('next_disabled')) {
+  if (
+    !next.classList.contains('next_disabled') &&
+    next.innerText === data.quiz.buttonNext
+  ) {
     secretAudio.pause();
     currentAudio.pause();
     changeCurrentQuestion();
@@ -311,6 +357,14 @@ function crossToNextQuestion() {
 
     variantsList.addEventListener('click', changeIndicatorsColor);
     variantsList.addEventListener('click', showCurrentBirdDescription);
+
+    // show results
+  } else if (
+    !next.classList.contains('next_disabled') &&
+    next.innerText === data.quiz.buttonResults
+  ) {
+    showResults();
+    resetProgress();
   }
 }
 

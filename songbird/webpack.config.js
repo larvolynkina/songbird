@@ -20,6 +20,7 @@ module.exports = {
   entry: {
     main: './src/pages/main/main.js',
     quiz: './src/pages/quiz/quiz.js',
+    gallery: './src/pages/gallery/gallery.js',
   },
 
   output: {
@@ -50,6 +51,11 @@ module.exports = {
       filename: 'quiz.html',
       template: './src/pages/quiz/quiz.html',
       chunks: ['quiz'],
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'gallery.html',
+      template: './src/pages/gallery/gallery.html',
+      chunks: ['gallery'],
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',

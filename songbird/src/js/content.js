@@ -2,8 +2,8 @@ const content = {
   ru: {
     main: {
       logo: 'Певчая птичка',
-      links: ['Главная', 'Викторина'],
-      urls: ['./index.html', './quiz.html'],
+      links: ['Главная', 'Викторина', 'Галерея'],
+      urls: ['./index.html', './quiz.html', './gallery.html'],
       h1: 'Викторина певчих птиц',
       promoText: 'Сможете угадать, чей это голос?',
       buttonText: 'Играть',
@@ -23,8 +23,9 @@ const content = {
         'Выберите правильный ответ из шести вариантов.',
       ],
       buttonNext: 'Следующий вопрос',
+      buttonResults: 'Результаты',
       results: {
-        h1: 'Поздравляем!!',
+        h1: 'Поздравляем!',
         text: 'Вы прошли викторину и набрали 13 из 30 возможных баллов!',
         buttonTryAgain: 'Попробовать еще раз',
       },
@@ -33,8 +34,8 @@ const content = {
   en: {
     main: {
       logo: 'Songbird',
-      links: ['Home', 'Quiz'],
-      urls: ['./index.html', './quiz.html'],
+      links: ['Home', 'Quiz', 'Gallery'],
+      urls: ['./index.html', './quiz.html', './gallery.html'],
       h1: 'Songbird quiz',
       promoText: 'Can you guess who is chirping?',
       buttonText: 'Start',
@@ -54,6 +55,7 @@ const content = {
         'Choose the correct answer from six variants leftward.',
       ],
       buttonNext: 'Next question',
+      buttonResults: 'Results',
       results: {
         h1: 'Congratulations!',
         text: 'You have passed the quiz and scored 13 out of 30 possible points!',
