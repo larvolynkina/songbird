@@ -1,3 +1,7 @@
+import playIco from '../assets/icons/play.svg';
+import pauseIco from '../assets/icons/pause.svg';
+import { checkIfDigitLessThanTen } from './functions';
+
 function moveAudioCircle(audio, bar, circle, progress) {
   let duration;
   let currentTime;
@@ -76,4 +80,42 @@ function setVolume(audio, index) {
   });
 }
 
-export { moveAudioCircle, setVolume };
+function toggleAudioPlayPause(audio, selector) {
+  const buttonDiv = document.querySelector(selector);
+  const button = buttonDiv.querySelector('img');
+  if (button.src.match('play')) {
+    audio.play();
+    button.src = pauseIco;
+  } else {
+    audio.pause();
+    button.src = playIco;
+  }
+}
+
+function updateAudioProgressAndTimer(audio, bar, circle, progress, timer) {
+  const { duration, currentTime } = audio;
+  const correlation = currentTime / duration;
+  const audioProgressBar = document.querySelector(bar);
+  const audioProgressCircle = document.querySelector(circle);
+  const audioProgressLine = document.querySelector(progress);
+  const fullWidth = parseInt(
+    window.getComputedStyle(audioProgressBar).width,
+    10
+  );
+  audioProgressLine.style.width = `${fullWidth * correlation}px`;
+  audioProgressCircle.style.left = `${fullWidth * correlation}px`;
+
+  const timerOnPage = document.querySelector(timer);
+  const minutes = checkIfDigitLessThanTen(Math.floor(currentTime / 60));
+  const seconds = checkIfDigitLessThanTen(
+    Math.round(currentTime - minutes * 60)
+  );
+  timerOnPage.innerText = `${minutes}:${seconds}`;
+}
+
+export {
+  moveAudioCircle,
+  setVolume,
+  toggleAudioPlayPause,
+  updateAudioProgressAndTimer,
+};

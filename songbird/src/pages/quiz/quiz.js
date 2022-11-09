@@ -13,12 +13,16 @@ import {
   checkIfDigitLessThanTen,
 } from '../../js/functions';
 
-import { moveAudioCircle, setVolume } from '../../js/audioplayer';
+import {
+  moveAudioCircle,
+  setVolume,
+  toggleAudioPlayPause,
+  updateAudioProgressAndTimer,
+} from '../../js/audioplayer';
 
 import errorSound from '../../assets/sounds/error.mp3';
 import successSound from '../../assets/sounds/success.mp3';
 import playIco from '../../assets/icons/play.svg';
-import pauseIco from '../../assets/icons/pause.svg';
 import unknownBird from '../../assets/images/unknown-bird.png';
 
 let lang = getLanguageSettings();
@@ -77,43 +81,10 @@ currentAudio.volume = 0.5;
 
 const variantsList = document.querySelector('.variants__list');
 
-function toggleAudioPlayPause(audio, selector) {
-  const buttonDiv = document.querySelector(selector);
-  const button = buttonDiv.querySelector('img');
-  if (button.src.match('play')) {
-    audio.play();
-    button.src = pauseIco;
-  } else {
-    audio.pause();
-    button.src = playIco;
-  }
-}
-
 const playButton = document.querySelector('.audio-player__button');
 playButton.addEventListener('click', () => {
   toggleAudioPlayPause(secretAudio, '.audio-player__button');
 });
-
-function updateAudioProgressAndTimer(audio, bar, circle, progress, timer) {
-  const { duration, currentTime } = audio;
-  const correlation = currentTime / duration;
-  const audioProgressBar = document.querySelector(bar);
-  const audioProgressCircle = document.querySelector(circle);
-  const audioProgressLine = document.querySelector(progress);
-  const fullWidth = parseInt(
-    window.getComputedStyle(audioProgressBar).width,
-    10
-  );
-  audioProgressLine.style.width = `${fullWidth * correlation}px`;
-  audioProgressCircle.style.left = `${fullWidth * correlation}px`;
-
-  const timerOnPage = document.querySelector(timer);
-  const minutes = checkIfDigitLessThanTen(Math.floor(currentTime / 60));
-  const seconds = checkIfDigitLessThanTen(
-    Math.round(currentTime - minutes * 60)
-  );
-  timerOnPage.innerText = `${minutes}:${seconds}`;
-}
 
 secretAudio.addEventListener('timeupdate', () => {
   updateAudioProgressAndTimer(
