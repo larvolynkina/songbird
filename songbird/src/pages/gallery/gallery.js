@@ -10,6 +10,9 @@ const data = content[lang];
 const birds = birdsData[lang];
 let count = 1;
 
+const birdAudio = new Audio();
+birdAudio.volume = 0.5;
+
 createNavLinks(data);
 const galleryList = document.querySelector('.gallery__list');
 
@@ -44,11 +47,23 @@ function createGalleryList() {
 createGalleryList();
 
 function findCurrentBird(event) {
+  const { id } = event.target.closest('li');
+  const index = Math.ceil(+id / 6) - 1;
+  const currentBird = birds[index][id - index * 6 - 1];
+  return currentBird;
+}
+
+function createBird(event) {
   if (event.target.closest('li')) {
-    const { id } = event.target.closest('li');
-    const index = Math.ceil(+id / 6) - 1;
-    console.log(birds[index][id - index * 6 - 1]);
+    const currentBird = findCurrentBird(event);
+    const img = document.querySelector('.bird__img');
+    img.src = currentBird.image;
+    img.alt = currentBird.name;
+    document.querySelector('.bird__title').innerText = currentBird.name;
+    document.querySelector('.bird__latin').innerText = currentBird.species;
+    document.querySelector('.bird__text').innerText = currentBird.description;
+    birdAudio.scr = currentBird.audio;
   }
 }
 
-galleryList.addEventListener('click', findCurrentBird);
+galleryList.addEventListener('click', createBird);

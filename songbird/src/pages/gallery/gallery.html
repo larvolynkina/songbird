@@ -24,6 +24,46 @@
   </header>
   <main class="gallery">
     <div class="container">
+      <div class="bird">
+        <div class="bird__wrapper">
+          <div class="bird__image">
+            <img src="https://live.staticflickr.com/65535/49221158846_b0b69a58f1.jpg" alt="" class="bird__img">
+          </div>
+          <div class="bird__descr">
+            <h3 class="bird__title"></h3>
+            <p class="bird__latin"></p>
+            <span class="line"></span>
+            <p class="bird__text"></p>
+          </div>
+        </div>
+        <div class="audio-player bird__audio ">
+          <div class="audio-player__wrapper">
+            <div class="audio-player__main-wrapper">
+              <div class="audio-player__button">
+                <img src="/src/assets/icons/play.svg" alt="">
+              </div>
+              <div class="audio-player__progress">
+                <div class="audio-player__progress-bar">
+                  <div id="audio-progress"></div>
+                  <div id="audio-circle"></div>
+                </div>
+                <div class="audio-player__progress-time">
+                  <div id="timer" class="audio-player__progress-timer">00:00</div>
+                  <div id="duration"></div>
+                </div>
+              </div>
+            </div>
+            <div class="audio-player__volume-wrapper">
+              <div class="audio-player__volume">
+                <div class="audio-player__mute">
+                  <img src="/src/assets/icons/volume.svg" alt="">
+                </div>
+                <input class="volume" type="range" min="0" max="1" step="0.01">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <ul class="gallery__list"></ul>
     </div>
   </main>
