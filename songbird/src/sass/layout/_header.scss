@@ -4,7 +4,7 @@
 
   &__wrapper {
     display: flex;
-    gap: 15rem;
+    justify-content: space-between;
     align-items: flex-end;
   }
 }
@@ -28,4 +28,41 @@
     font-size: 2rem;
     font-weight: 400;
   }
+}
+
+.language {
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  &:hover {
+    background: #ece0c8;
+    select {
+      background: #ece0c8;
+    }
+
+  }
+
+  &__image {
+    width: 25px;
+    height: 25px;
+  }
+
+  &__img {
+    width: 100%;
+  }
+
+  select {
+    min-width: 110px;
+    font-size: 2rem;
+    font-weight: 400;
+    background: $main-color;
+    border: none;
+    padding: 5px 0px 5px 15px;
+    outline: none;
+    cursor: pointer;
+    text-align: left;
+  }
+
+
 }
