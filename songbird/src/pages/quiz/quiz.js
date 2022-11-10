@@ -11,6 +11,8 @@ import {
   pickSecretNumber,
   checkCurrentQuestion,
   checkIfDigitLessThanTen,
+  changeLocale,
+  showResults,
 } from '../../js/functions';
 
 import {
@@ -25,17 +27,20 @@ import successSound from '../../assets/sounds/success.mp3';
 import playIco from '../../assets/icons/play.svg';
 import unknownBird from '../../assets/images/unknown-bird.png';
 
-let lang = getLanguageSettings();
-const data = content[lang];
-const birds = birdsData[lang];
+// const lang = getLanguageSettings();
+// const data = content[lang];
+// const birds = birdsData[lang];
 
 let score = 0;
 let progressValue = 0;
 
-createNavLinks(data);
-createHtmlQuiz(data);
+createNavLinks();
+createHtmlQuiz();
+changeLocale();
 
 function fillVariantsContent() {
+  const lang = getLanguageSettings();
+  const birds = birdsData[lang];
   score += 5;
   const secretNumber = pickSecretNumber();
   console.log(secretNumber);
@@ -59,6 +64,8 @@ function fillVariantsContent() {
 let secretNumber = fillVariantsContent();
 
 function createAudioForSecretBird() {
+  const lang = getLanguageSettings();
+  const birds = birdsData[lang];
   const currentQuestionIndex = checkCurrentQuestion();
   const currentBird = birds[currentQuestionIndex].filter(
     (value) => value.id === secretNumber
@@ -97,6 +104,8 @@ secretAudio.addEventListener('timeupdate', () => {
 });
 
 function showCurrentBirdDescription(event) {
+  const lang = getLanguageSettings();
+  const birds = birdsData[lang];
   const playButtonMini = document.querySelector('.audio-player__button_mini');
   playButtonMini.innerHTML = '';
   const button = document.createElement('img');
@@ -112,6 +121,8 @@ function showCurrentBirdDescription(event) {
   const variantsDescr = document.querySelector('.variants__descr');
   variantsDescr.style.display = 'block';
 
+  console.log(event.target.closest('li'));
+
   const { id } = event.target;
   const currentQuestionIndex = checkCurrentQuestion();
   const variantsImg = document.querySelector('.variants__img');
@@ -119,6 +130,8 @@ function showCurrentBirdDescription(event) {
     (value) => value.id === +id
   );
   // add img
+  console.log(currentBird[0]);
+  console.log(currentBird[0].image);
   variantsImg.src = `${currentBird[0].image}`;
   // add title
   document.querySelector(
@@ -163,6 +176,8 @@ function showCurrentBirdDescription(event) {
 }
 
 function showSecretBirdInfo(event) {
+  const lang = getLanguageSettings();
+  const birds = birdsData[lang];
   const { id } = event.target;
   const currentQuestionIndex = checkCurrentQuestion();
   const currentBird = birds[currentQuestionIndex].filter(
@@ -177,6 +192,8 @@ function showSecretBirdInfo(event) {
 }
 
 function changeIndicatorsColor(event) {
+  const lang = getLanguageSettings();
+  const data = content[lang];
   const indicators = document.querySelectorAll('.variants__indicator');
   const variantsItems = document.querySelectorAll('.variants__item');
   let currentIndex;
@@ -265,40 +282,9 @@ function resetProgress() {
   });
 }
 
-function showResults() {
-  const scoreTable = document.querySelector('.score');
-  scoreTable.style.display = 'none';
-  const questionSection = document.querySelector('.question');
-  questionSection.style.display = 'none';
-  const variantsSection = document.querySelector('.variants');
-  variantsSection.style.display = 'none';
-  const resultsSection = document.querySelector('.results');
-  resultsSection.style.display = 'block';
-  const resultsText = document.querySelector('.results__text');
-
-  if (score < 30) {
-    if (lang === 'ru') {
-      resultsText.innerText = `Вы прошли викторину и набрали ${score} из 30 возможных баллов!`;
-    } else {
-      resultsText.innerText = `You have passed the quiz and scored ${score} out of 30 possible points!`;
-    }
-
-    const playAgainBtn = document.querySelector('.play-again');
-    playAgainBtn.addEventListener('click', () => {
-      document.location.href = './quiz.html';
-    });
-  } else if (score === 30) {
-    if (lang === 'ru') {
-      resultsText.innerText = `Игра окончена.\nВы победили в викторине и набрали 30 из 30 возможных баллов!`;
-    } else {
-      resultsText.innerText = `Game is over. \nYou have win the quiz and scored 30 out of 30 possible points!`;
-    }
-    const playAgainBtn = document.querySelector('.play-again');
-    playAgainBtn.style.display = 'none';
-  }
-}
-
 function crossToNextQuestion() {
+  const lang = getLanguageSettings();
+  const data = content[lang];
   const next = document.querySelector('.next');
   if (
     !next.classList.contains('next_disabled') &&
@@ -306,6 +292,14 @@ function crossToNextQuestion() {
   ) {
     secretAudio.pause();
     currentAudio.pause();
+
+    const button = document
+      .querySelector('.audio-player__button')
+      .querySelector('img');
+    button.src = playIco;
+    document.querySelector('#audio-progress').style.width = '0%';
+    document.querySelector('#audio-circle').style.left = '0';
+
     changeCurrentQuestion();
     deleteVariants();
     secretNumber = fillVariantsContent();
@@ -334,7 +328,7 @@ function crossToNextQuestion() {
     !next.classList.contains('next_disabled') &&
     next.innerText === data.quiz.buttonResults
   ) {
-    showResults();
+    showResults(score);
     resetProgress();
   }
 }
