@@ -9,9 +9,16 @@ import {
   changeLocale,
 } from '../../js/functions';
 
-let lang = getLanguageSettings();
-const data = content[lang];
+document.addEventListener('DOMContentLoaded', () => {
+  const lang = getLanguageSettings();
+  const data = content[lang];
 
-createNavLinks();
-createHtmlMain(data);
-changeLocale();
+  createNavLinks();
+  createHtmlMain(data);
+  changeLocale();
+
+  const startBtn = document.querySelector('.btn');
+  startBtn.addEventListener('click', () => {
+    document.location.href = './quiz.html';
+  });
+});

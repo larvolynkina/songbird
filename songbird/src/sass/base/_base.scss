@@ -6,6 +6,9 @@ html {
 .page {
   background: $background-color;
   font-family: 'Roboto', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .main-title {

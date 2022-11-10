@@ -147,7 +147,6 @@ function createGalleryList() {
 }
 
 function showResults(score) {
-  console.log(score);
   const lang = getLanguageSettings();
   const scoreTable = document.querySelector('.score');
   scoreTable.style.display = 'none';
