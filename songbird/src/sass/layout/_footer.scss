@@ -1,6 +1,12 @@
 .footer {
     padding: 2rem 0;
     background: $main-color;
+    @include media-tablet {
+        padding: 10px 0;
+    }
+    @include media-mobile-mini {
+        padding: 5px 0;
+    }
 
     &__wrapper {
         display: flex;
@@ -10,6 +16,9 @@
 
     &__link {
         width: 7rem;
+        @include media-mobile-mini {
+            width: 50px;
+        }
     }
 
     &__img {
@@ -19,5 +28,11 @@
     &__year {
         font-size: 1.8rem;
         font-weight: 400;
+        @include media-tablet {
+            font-size: 1.6rem;
+        }
+        @include media-mobile {
+            font-size: 1.4rem;
+        }
     }
 }

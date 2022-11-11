@@ -4,4 +4,10 @@
     & > * {
         flex-basis: 48.5%;
     }
+    @include media-small {
+        gap: 10px;
+    }
+    @include media-mobile {
+        flex-direction: column;
+    }
 }

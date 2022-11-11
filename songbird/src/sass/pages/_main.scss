@@ -16,6 +16,15 @@
 
 .promo {
     padding: 60px 0 120px;
+    @include media-small {
+        padding: 0 0 40px;
+    }
+    @include media-tablet {
+        padding: 0 0 30px;
+    }
+    @include media-mobile {
+        padding: 0 0 20px;
+    }
 
     &__wrapper {
         margin-top: 6rem;
@@ -29,8 +38,36 @@
         background: linear-gradient(-45deg, #D6BC87, #D6BC87, #E0CCA4, #EBDEC4, #f7f2e8, #f7f2e8);
         background-size: 400% 400%;
         animation: gradient 10s ease infinite;
+        @include media-small {
+            margin-top: 0;
+        }
+        @include media-tablet {
+            padding: 30px 0;
+            gap: 10px;
+        }
     }
 
+    &__question {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    &__play {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        background-image: url('/src/assets/icons/play.svg');
+        background-size: 100%;
+        opacity: 1;
+        @include media-tablet {
+            width: 25px;
+            height: 25px;
+        }
+        &_active {
+            background-image: url('/src/assets/icons/pause.svg');
+        }
+    }
     
 
     // .promo__text
@@ -39,13 +76,24 @@
         text-align: center;
         font-size: 2.5rem;
         font-weight: 400;
-        padding-bottom: 1rem;
+        @include media-tablet {
+            font-size: 2rem;
+        }
+        @include media-mobile {
+            font-size: 1.8rem;
+        }
+        @include media-mobile-mini {
+            font-size: 1.6rem;
+        }
     }
 
      // .promo__img
 
     &__img {
         width: 35%;
+        @include media-mobile-mini {
+            width: 60%;
+        }
     }
 
     // .promo__btn

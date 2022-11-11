@@ -12,6 +12,22 @@ function getLanguageSettings() {
   return lang;
 }
 
+function changeActiveNavLink() {
+  const navItems = document.querySelectorAll('.nav__item');
+  const main = document.querySelector('main');
+  navItems.forEach((item) => {
+    item.classList.remove('nav__item_active');
+  });
+
+  if (main.classList.contains('home')) {
+    navItems[0].classList.add('nav__item_active');
+  } else if (main.classList.contains('quiz')) {
+    navItems[1].classList.add('nav__item_active');
+  } else {
+    navItems[2].classList.add('nav__item_active');
+  }
+}
+
 function createNavLinks() {
   const lang = getLanguageSettings();
   const data = content[lang];
@@ -28,6 +44,8 @@ function createNavLinks() {
     li.append(link);
     navList.append(li);
   });
+
+  changeActiveNavLink();
 }
 
 function createHtmlMain(data) {
@@ -281,4 +299,5 @@ export {
   changeLocale,
   createGalleryList,
   showResults,
+  changeActiveNavLink,
 };

@@ -8,6 +8,21 @@
     padding: 1.2rem 10rem;
     cursor: pointer;
     border-radius: 4px;
+    @include media-tablet {
+        font-size: 2rem;
+        padding: 1rem 8rem;
+    }
+    @include media-mobile {
+        font-size: 1.8rem;
+        padding: 1rem 6rem;
+    }
+    @include media-mobile-mini {
+        font-size: 1.6rem;
+        padding: 0.6rem 3rem;
+    }
+    &:hover {
+        background: #FFB41A;
+    }
 }
 
 .next {
@@ -20,6 +35,15 @@
     font-size: 1.8rem;
     font-weight: 400;
     border-radius: 4px;
+    @include media-small {
+        margin-top: 10px;
+        font-size: 1.6rem;
+        padding: 10px 40px;
+    }
+    @include media-mobile {
+        font-size: 1.4rem;
+        padding: 10px 30px;
+    }
     &_disabled {
         opacity: 0.5;
         cursor: auto;

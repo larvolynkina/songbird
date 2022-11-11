@@ -1,11 +1,17 @@
 .header {
-  padding: 45px 0 55px;
+  padding: 30px 0;
   background: $main-color;
+  @include media-tablet {
+    padding: 25px 0;
+  }
+  @include media-mobile-mini {
+    padding: 20px 0;
+  }
 
   &__wrapper {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
   }
 }
 
@@ -16,17 +22,49 @@
   &__list {
     display: flex;
     gap: 5rem;
+    @include media-tablet {
+      gap: 30px;
+    }
+    @include media-mobile {
+      gap: 20px;
+    }
+    @include media-mobile-mini {
+      gap: 10px;
+    }
   }
 
   // .nav__item
 
-  &__item {}
+  &__item {
+    position: relative;
+    &_active {
+      color: #9D4605;
+      &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background: #9D4605;
+        bottom: -2px;
+        right: 0;
+      }
+    }
+  }
 
   // .nav__link
 
   &__link {
     font-size: 2rem;
     font-weight: 400;
+    @include media-tablet {
+      font-size: 1.6rem;
+    }
+    @include media-mobile {
+      font-size: 1.4rem;
+    }
+    &:hover {
+      color: #9D4605;
+    }
   }
 }
 
@@ -35,6 +73,9 @@
   display: flex;
   align-items: center;
   border-radius: 10px;
+  @include media-mobile-mini {
+    padding: 0;
+  }
   &:hover {
     background: #ece0c8;
     select {
@@ -47,6 +88,10 @@
     width: 25px;
     height: 25px;
     cursor: pointer;
+    @include media-tablet {
+      width: 20px;
+      height: 20px;
+    }
   }
 
   &__img {
@@ -63,6 +108,14 @@
     outline: none;
     cursor: pointer;
     text-align: left;
+    @include media-tablet {
+      font-size: 1.6rem;
+      min-width: 90px;
+      padding: 5px 0px 5px 10px;
+    }
+    @include media-mobile {
+      display: none;
+    }
   }
 
 
