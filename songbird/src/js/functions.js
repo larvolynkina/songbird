@@ -2,7 +2,7 @@ import content from './content';
 import birdsData from './birds';
 
 function getLanguageSettings() {
-  let lang = localStorage.getItem('lang');
+  let lang = localStorage.getItem('lang-larvolynkina');
   if (lang) {
     const languageSelect = document.querySelector('#language');
     languageSelect.value = lang;
@@ -268,7 +268,7 @@ function rebuildPageAfterLocaleChange() {
 function changeLocale() {
   const languageSelect = document.querySelector('#language');
   languageSelect.addEventListener('change', () => {
-    localStorage.setItem('lang', languageSelect.value);
+    localStorage.setItem('lang-larvolynkina', languageSelect.value);
     rebuildPageAfterLocaleChange();
   });
 
@@ -276,11 +276,11 @@ function changeLocale() {
   languageChangeBtn.addEventListener('click', () => {
     const currentLang = getLanguageSettings();
     if (currentLang === 'ru') {
-      localStorage.setItem('lang', 'en');
+      localStorage.setItem('lang-larvolynkina', 'en');
       languageSelect.value = 'en';
       rebuildPageAfterLocaleChange();
     } else {
-      localStorage.setItem('lang', 'ru');
+      localStorage.setItem('lang-larvolynkina', 'ru');
       languageSelect.value = 'ru';
       rebuildPageAfterLocaleChange();
     }
